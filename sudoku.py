@@ -7,7 +7,6 @@ pygame.font.init()
 
 class Game:
     test = create_sudoku()
-
     def __init__(self, rows, cols, height, width):
         self.rows = rows 
         self.cols = cols 
@@ -16,7 +15,7 @@ class Game:
         self.cubes = [[Cell(self.test[i][j], i, j, height, width) for j in range(cols)] for i in range(rows)]        
         self.model = None 
         self.selected = None 
-    
+
     def grids(self, windows):
         spacing = self.width / 9
         for i in range(self.rows+1):
@@ -142,8 +141,6 @@ strikes = 0
 start = time.time() 
 key = None 
 run = True 
-# Make solution available in command prompt 
-print_solution(test)       
 while run:
     play_time = round(time.time() - start)
     for event in pygame.event.get():
@@ -182,7 +179,7 @@ while run:
                     key = None 
                     if test.complete() or strikes==3:
                         print("Game over!")
-                        run = False 
+                        print_solution(test.cubes) 
         if event.type == pygame.MOUSEBUTTONDOWN:
             position = pygame.mouse.get_pos()
             where = test.click(position)
