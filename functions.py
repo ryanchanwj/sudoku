@@ -138,6 +138,7 @@ def solve(grid):
                 (grid[r])[c] = 0
     return False  
 
+
 def print_solution(grid):
     solve(grid)
     print("Solution to Sudoku Puzzle:")
