@@ -5,12 +5,8 @@ name: SPM
 
 on: [push, pull_request]
 
-# permissions:
-#   contents: read
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
     env:
       DB_NAME: test_spm_db
@@ -26,7 +22,6 @@ jobs:
         ports:
         - '8888:3306'
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -52,7 +47,7 @@ jobs:
       run: |
         # sudo systemctl enable mysql.service
         # sudo systemctl start mysql.service
-        mysql -h 127.0.0.1 --port 8888 -e 'CREATE DATABASE IF NOT EXIST ${{ env.DB_DATABASE }};' -uroot -ppassword
+        mysql -h 127.0.0.1 --port 8888 -e 'CREATE DATABASE IF NOT EXIST test;' -uroot -ppassword
         mysql -h 127.0.0.1 --port 8888 -e 'SHOW DATABASES;' -uroot -ppassword
 #     - name: Lint with flake8
 #       run: |
