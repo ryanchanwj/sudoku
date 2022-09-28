@@ -5,7 +5,6 @@ Flask-SQLAlchemy==2.5.1
 mysqlclient==2.1.1
 mysql-connector-python==8.0.27
 werkzeug==2.0.3
-# Flask-SQLAlchemy==2.5.1
 # functions==0.7.0
 # pika==1.2.0
 # requests==2.19.1

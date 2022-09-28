@@ -38,7 +38,7 @@ jobs:
       run: |
         touch .env
         echo DB_HOSTNAME=${{ env.DB_HOSTNAME }} >> .env
-        echo DB_PORT=3306 >> .env
+        echo DB_PORT=8888 >> .env
         echo DB_USERNAME=${{ env.DB_USERNAME }} >> .env
         echo DB_PASSWORD=${{ env.DB_PASSWORD }} >> .env
         echo DB_NAME=${{ env.DB_NAME }} >> .env
