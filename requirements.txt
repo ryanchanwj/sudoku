@@ -1,5 +1,6 @@
 Flask==2.0.2
 Flask-Cors==3.0.10
+Flask-SQLAlchemy==2.5.1
 werkzeug==2.0.3
 # Flask-SQLAlchemy==2.5.1
 # functions==0.7.0
