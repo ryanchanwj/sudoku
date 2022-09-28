@@ -50,8 +50,8 @@ jobs:
       run: |
         sudo systemctl enable mysql.service
         sudo systemctl start mysql.service
-        mysql --host localhost --port 3306 -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -uroot -ppassword
-        mysql --host localhost --port 3306 -e 'SHOW DATABASES;' -uroot -ppassword
+        mysql --host localhost --port 3306 -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -uroot
+        mysql --host localhost --port 3306 -e 'SHOW DATABASES;' -uroot
 #     - name: Lint with flake8
 #       run: |
 #         # stop the build if there are Python syntax errors or undefined names
