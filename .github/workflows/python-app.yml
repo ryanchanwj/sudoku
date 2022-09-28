@@ -38,7 +38,6 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Setup MySQL database
       run: |
-        sudo /etc/init.d/mysql start
         mysql --host localhost --port 3306 -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -uroot -ppassword
         mysql --host localhost --port 3306 -e 'SHOW DATABASES;' -uroot -ppassword
 #     - name: Lint with flake8
