@@ -12,14 +12,14 @@ CREATE TABLE Job_Role (
 -- population of data
 insert into Job_Role values (1,"CEO","The big boss"),(2,"Operations manager","Manager"),(3,"Operations Slave","Staff");
 
-DROP TABLE IF EXISTS `skill`;
-CREATE TABLE IF NOT EXISTS `skill` (
+DROP TABLE IF EXISTS `Skill`;
+CREATE TABLE IF NOT EXISTS `Skill` (
   `Skill_ID` char(13) NOT NULL,
   `name` varchar(64) NOT NULL,
   PRIMARY KEY (`Skill_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `skill` (`Skill_ID`, `name`) VALUES
+INSERT INTO `Skill` (`Skill_ID`, `name`) VALUES
 ('S001', 'Critical Thinking'),
 ('S002', 'People Management');
 
@@ -31,7 +31,7 @@ CREATE TABLE Role_has_Skill (
     CONSTRAINT Job_ID FOREIGN KEY (Job_ID)
     REFERENCES Job_Role(Job_ID),
     CONSTRAINT Skill_ID FOREIGN KEY (Skill_ID)
-    REFERENCES skill(Skill_ID)
+    REFERENCES Skill(Skill_ID)
 );
 
 INSERT INTO `Role_has_Skill` VALUES
