@@ -47,7 +47,7 @@ jobs:
       run: |
         # sudo systemctl enable mysql.service
         # sudo systemctl start mysql.service
-        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e "CREATE DATABASE IF NOT EXISTS 'test';" -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
+        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e "CREATE DATABASE IF NOT EXISTS test;" -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
         mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e 'SHOW DATABASES;' -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
 #     - name: Lint with flake8
 #       run: |
