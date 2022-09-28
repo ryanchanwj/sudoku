@@ -47,8 +47,9 @@ jobs:
       run: |
         # sudo systemctl enable mysql.service
         # sudo systemctl start mysql.service
-        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e "CREATE DATABASE IF NOT EXISTS test;" -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
-        mysqlshow -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }} test > /dev/null 2>&1 && echo "Database exists."
+        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e "DROP SCHEMA IF EXISTS test;" -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
+        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }} < test.sql
+        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e "SHOW schemas;" -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
 #     - name: Lint with flake8
 #       run: |
 #         # stop the build if there are Python syntax errors or undefined names

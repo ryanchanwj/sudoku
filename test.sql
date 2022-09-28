@@ -1,6 +1,6 @@
 
-CREATE SCHEMA IF NOT EXISTS spm_db DEFAULT CHARACTER SET utf8 ;
-use spm_db;
+CREATE SCHEMA IF NOT EXISTS test_spm_db DEFAULT CHARACTER SET utf8 ;
+use test_spm_db;
 -- Job_role Table 
 DROP TABLE IF EXISTS `Job_Role`;
 CREATE TABLE Job_Role (
