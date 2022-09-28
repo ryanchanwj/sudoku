@@ -47,8 +47,8 @@ jobs:
       run: |
         # sudo systemctl enable mysql.service
         # sudo systemctl start mysql.service
-        mysql -h 127.0.0.1 --port 8888 -e 'CREATE DATABASE test;' -uroot -ppassword
-        mysql -h 127.0.0.1 --port 8888 -e 'SHOW DATABASES;' -uroot -ppassword
+        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e "CREATE DATABASE IF NOT EXISTS 'test';" -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
+        mysql -h ${{ env.DB_HOSTNAME }} --port 8888 -e 'SHOW DATABASES;' -u${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }}
 #     - name: Lint with flake8
 #       run: |
 #         # stop the build if there are Python syntax errors or undefined names
