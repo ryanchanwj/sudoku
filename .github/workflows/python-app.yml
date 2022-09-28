@@ -19,9 +19,12 @@ jobs:
       DB_HOST: localhost
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test
         ports:
-        - 3306
+        - '8888:3306'
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
 
     steps:
@@ -47,10 +50,10 @@ jobs:
 
     - name: Setup MySQL database
       run: |
-        sudo systemctl enable mysql.service
-        sudo systemctl start mysql.service
-        mysql --host localhost --port 3306 -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -uroot -proot
-        mysql --host localhost --port 3306 -e 'SHOW DATABASES;' -uroot -proot
+        # sudo systemctl enable mysql.service
+        # sudo systemctl start mysql.service
+        mysql -h 127.0.0.1 --port 8888 -e 'CREATE DATABASE IF NOT EXIST ${{ env.DB_DATABASE }};' -uroot -ppassword
+        mysql -h 127.0.0.1 --port 8888 -e 'SHOW DATABASES;' -uroot -ppassword
 #     - name: Lint with flake8
 #       run: |
 #         # stop the build if there are Python syntax errors or undefined names
