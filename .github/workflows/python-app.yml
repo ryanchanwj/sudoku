@@ -12,15 +12,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      DB_NAME: test_spm_db
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_HOST: localhost
     services:
       mysql:
         image: mysql:5.7
-        env:
-          DB_NAME: test_spm_db
-          DB_USERNAME: root
-          DB_PASSWORD: password
-          MYSQL_ROOT_PASSWORD: password
-          DB_HOST: localhost
         ports:
         - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
@@ -50,8 +49,8 @@ jobs:
       run: |
         sudo systemctl enable mysql.service
         sudo systemctl start mysql.service
-        mysql --host localhost --port 3306 -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -uroot
-        mysql --host localhost --port 3306 -e 'SHOW DATABASES;' -uroot
+        mysql --host localhost --port 3306 -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -uroot -proot
+        mysql --host localhost --port 3306 -e 'SHOW DATABASES;' -uroot -proot
 #     - name: Lint with flake8
 #       run: |
 #         # stop the build if there are Python syntax errors or undefined names
