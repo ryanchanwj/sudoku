@@ -12,7 +12,7 @@ jobs:
       DB_NAME: test_spm_db
       DB_USERNAME: root
       DB_PASSWORD: password
-      DB_HOST: localhost
+      DB_HOSTNAME: '127.0.0.1'
     services:
       mysql:
         image: mysql:8.0
@@ -47,7 +47,7 @@ jobs:
       run: |
         # sudo systemctl enable mysql.service
         # sudo systemctl start mysql.service
-        mysql -h 127.0.0.1 --port 8888 -e 'CREATE DATABASE IF NOT EXIST test;' -uroot -ppassword
+        mysql -h 127.0.0.1 --port 8888 -e 'CREATE DATABASE test;' -uroot -ppassword
         mysql -h 127.0.0.1 --port 8888 -e 'SHOW DATABASES;' -uroot -ppassword
 #     - name: Lint with flake8
 #       run: |
