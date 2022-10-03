@@ -80,7 +80,6 @@ def test_get_all_roles():
         assert response.status_code == 200
         all_roles = response.get_json()['data']
         assert len(all_roles) > 0
-        assert response.status_code == 200
 
 
 # def test_get_single_role():
